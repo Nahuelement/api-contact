@@ -1,10 +1,15 @@
 """
 Serializers for recipe APIs
 """
+import os
 from email.mime import image
 from rest_framework import serializers
+from django.core.mail import send_mail
 
 from core.models import Recipe
+
+
+
 
 
 # class TagSerializer(serializers.ModelSerializer):
@@ -62,7 +67,14 @@ class RecipeSerializer(serializers.ModelSerializer):
         recipe = Recipe.objects.create(**validated_data)
         # self._get_or_create_tags(tags, recipe)
         # self._get_or_create_ingredients(ingredients, recipe)
+        subject = f"Tienes un nuevo mensaje de contacto de {recipe.firstName}  "
 
+        message = f"Tienes un mensaje de  {recipe.firstName} su email es  {recipe.email}\n\n" \
+                      f" su telefono es {recipe.Phone}\'s de la compañia {recipe.Company} comments: {recipe.Comment}"
+        response = send_mail(subject, message,'nahuel.perugi@gmail.com',
+                      ['nahuel.perugi@gmail.com'],fail_silently=False)
+
+        print(response)
 
         return recipe
 
