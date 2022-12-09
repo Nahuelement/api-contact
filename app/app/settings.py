@@ -161,6 +161,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 print(os.environ.get('EMAIL_HOST_USER'))
-print(type(os.environ.get('EMAIL_HOST_PASSWORD')))
-print((os.environ.get('DB_USER')))
+print(os.environ.get('DB_USER'))
+print((os.environ.get('DJANGO_ALLOWED_HOSTS')))
 # EMAIL_USE_SSL = True
