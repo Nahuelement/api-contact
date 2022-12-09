@@ -156,11 +156,10 @@ SPECTACULAR_SETTINGS = {
 }
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('HOST_PASSWORD')
 EMAIL_PORT = 587
+print(os.environ.get('HOST_USER'))
 EMAIL_USE_TLS = True
-print(os.environ.get('EMAIL_HOST_USER'))
-print(os.environ.get('DB_USER'))
-print((os.environ.get('DJANGO_ALLOWED_HOSTS')))
+
 # EMAIL_USE_SSL = True
