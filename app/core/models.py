@@ -39,7 +39,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(max_length=255)
+    email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -51,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Recipe(models.Model):
 
     firstName = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255)
     Phone = models.CharField(max_length=255, blank=True)
     Company = models.CharField(max_length=255, blank=True)
     Comment = models.TextField(max_length=None, blank=True)
