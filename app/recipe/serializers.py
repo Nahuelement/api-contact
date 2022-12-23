@@ -75,6 +75,7 @@ class RecipeSerializer(serializers.ModelSerializer):
                       ['nahuel.perugi@gmail.com'],fail_silently=False)
 
         print(response)
+        
 
         return recipe
 
