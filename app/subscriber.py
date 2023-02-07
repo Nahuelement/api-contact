@@ -11,6 +11,8 @@ from django.core.mail import send_mail
 from core.models import Recipe
 import pika
 import json
+from recipe import serializers
+import codecs
 
 
 
@@ -36,19 +38,23 @@ channel.queue_bind(exchange='info_exchange', queue=queue_name, routing_key="Info
 
 
 def callback(ch, method, properties, body):
-    print('[x] pricipio del proceso %r' %str(body[1]))
-    recipe = Recipe.objects.create(body[0])
+    strBody = codecs.decode(body, 'UTF-8')
+    print('[x] pricipio del proceso %r' %strBody)
+    serializerBody = serializers.RecipeSerializer(json.loads(strBody))
+    print(len(strBody))
+
+    recipe = Recipe.objects.create(**json.loads(strBody))
     # self._get_or_create_tags(tags, recipe)
     # self._get_or_create_ingredients(ingredients, recipe)
     print(recipe.firstName)
-    subject = f"Tienes un nuevo mensaje de contacto de {recipe.firstName}  "
+    # subject = f"Tienes un nuevo mensaje de contacto de {recipe.firstName}  "
 
-    message = f"Tienes un mensaje de  {recipe.firstName} su email es  {recipe.email}\n\n" \
-                    f" su telefono es {recipe.Phone}\'s de la compañia {recipe.Company} comments: {recipe.Comment}"
-    response = send_mail(subject, message,'nahuel.perugi@gmail.com',
-                    ['nahuel.perugi@gmail.com'],fail_silently=False)
+    # message = f"Tienes un mensaje de  {recipe.firstName} su email es  {recipe.email}\n\n" \
+    #                 f" su telefono es {recipe.Phone}\'s de la compañia {recipe.Company} comments: {recipe.Comment}"
+    # response = send_mail(subject, message,'nahuel.perugi@gmail.com',
+    #                 ['nahuel.perugi@gmail.com'],fail_silently=False)
 
-    print('[x] fin del proceso %r' %body)
+    print('[x] fin del proceso %r' %recipe.firstName)
 
 
 
