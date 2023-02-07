@@ -8,7 +8,7 @@ import json
 def PublishRabittMQ(info):
 
     print(info)
-    connection = pika.BlockingConnection(pika.ConnectionParameters('myhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('rabbithost'))
 
     channel = connection.channel()
 

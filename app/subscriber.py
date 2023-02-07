@@ -15,7 +15,7 @@ import json
 
 
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('myhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters('rabbithost'))
 
 channel = connection.channel()
 
