@@ -37,6 +37,31 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     serializer_class = serializers.RecipeSerializer
     queryset = Recipe.objects.all()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### No hay mas que lo de arriba
+
+
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
 

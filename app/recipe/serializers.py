@@ -7,6 +7,7 @@ from rest_framework import serializers
 from django.core.mail import send_mail
 
 from core.models import Recipe
+from published import PublishRabittMQ
 
 
 
@@ -64,20 +65,12 @@ class RecipeSerializer(serializers.ModelSerializer):
 
         # tags = validated_data.pop('tags', [])
         # ingredients = validated_data.pop('ingredients', [])
-        recipe = Recipe.objects.create(**validated_data)
-        # self._get_or_create_tags(tags, recipe)
-        # self._get_or_create_ingredients(ingredients, recipe)
-        subject = f"Tienes un nuevo mensaje de contacto de {recipe.firstName}  "
 
-        message = f"Tienes un mensaje de  {recipe.firstName} su email es  {recipe.email}\n\n" \
-                      f" su telefono es {recipe.Phone}\'s de la compañia {recipe.Company} comments: {recipe.Comment}"
-        response = send_mail(subject, message,'nahuel.perugi@gmail.com',
-                      ['nahuel.perugi@gmail.com'],fail_silently=False)
+        PublishRabittMQ(validated_data)
 
-        print(response)
-        
 
-        return recipe
+
+        return validated_data
 
 #     def update(self, instance, validated_data):
 
