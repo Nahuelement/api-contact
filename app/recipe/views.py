@@ -8,7 +8,8 @@ from drf_spectacular.utils import (
     OpenApiTypes,
 )
 from rest_framework import viewsets, mixins, status
-from rest_framework import generics, authentication, permissions
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 from core.models import Recipe
@@ -32,11 +33,11 @@ from recipe import serializers
 )
 class RecipeViewSet(viewsets.ModelViewSet):
 
-
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     serializer_class = serializers.RecipeSerializer
     queryset = Recipe.objects.all()
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+
 
 
 
