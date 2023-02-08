@@ -49,12 +49,11 @@ def callback(ch, method, properties, body):
     print(recipe.firstName)
     subject = f"Tienes un nuevo mensaje  de {recipe.firstName}  "
 
-    message = f"te acaba de contactar {recipe.firstName} \
-                su infromacion es la sigueinte  es \n\n \
-                su mail: {recipe.email} \n\n \
-                numero de contacto: {recipe.Phone} \n\n \
-                compañia: {recipe.Company} \n\n \
-                comentario: {recipe.Comment}"
+    message = f"te acaba de contactar {recipe.firstName} su informacion es la sigueinte  es: \n\n \
+                - su mail {recipe.email} \n\n \
+                - numero de contacto {recipe.Phone} \n\n \
+                - compañia: {recipe.Company} \n\n \
+                - comentario {recipe.Comment}"
     response = send_mail(subject, message,'nahuel.perugi@gmail.com',
                     ['nahuel.perugi@gmail.com'],fail_silently=False)
 
