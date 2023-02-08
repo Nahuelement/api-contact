@@ -50,10 +50,10 @@ def callback(ch, method, properties, body):
     subject = f"Tienes un nuevo mensaje  de {recipe.firstName}  "
 
     message = f"te acaba de contactar {recipe.firstName} su informacion es la sigueinte  es: \n\n \
-                - su mail {recipe.email} \n\n \
-                - numero de contacto {recipe.Phone} \n\n \
-                - compañia: {recipe.Company} \n\n \
-                - comentario {recipe.Comment}"
+                - Mail: {recipe.email} \n \
+                - Numero de contacto: {recipe.Phone} \n \
+                - Compañia: {recipe.Company} \n \
+                - Comentario: {recipe.Comment}"
     response = send_mail(subject, message,'nahuel.perugi@gmail.com',
                     ['nahuel.perugi@gmail.com'],fail_silently=False)
 
