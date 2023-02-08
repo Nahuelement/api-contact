@@ -47,12 +47,16 @@ def callback(ch, method, properties, body):
     # self._get_or_create_tags(tags, recipe)
     # self._get_or_create_ingredients(ingredients, recipe)
     print(recipe.firstName)
-    # subject = f"Tienes un nuevo mensaje de contacto de {recipe.firstName}  "
+    subject = f"Tienes un nuevo mensaje  de {recipe.firstName}  "
 
-    # message = f"Tienes un mensaje de  {recipe.firstName} su email es  {recipe.email}\n\n" \
-    #                 f" su telefono es {recipe.Phone}\'s de la compañia {recipe.Company} comments: {recipe.Comment}"
-    # response = send_mail(subject, message,'nahuel.perugi@gmail.com',
-    #                 ['nahuel.perugi@gmail.com'],fail_silently=False)
+    message = f"te acaba de contactar {recipe.firstName} \
+                su infromacion es la sigueinte  es \n\n \
+                su mail: {recipe.email} \n\n \
+                numero de contacto: {recipe.Phone} \n\n \
+                compañia: {recipe.Company} \n\n \
+                comentario: {recipe.Comment}"
+    response = send_mail(subject, message,'nahuel.perugi@gmail.com',
+                    ['nahuel.perugi@gmail.com'],fail_silently=False)
 
     print('[x] fin del proceso %r' %recipe.firstName)
 
