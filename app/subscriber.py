@@ -39,14 +39,14 @@ channel.queue_bind(exchange='info_exchange', queue=queue_name, routing_key="Info
 
 def callback(ch, method, properties, body):
     strBody = codecs.decode(body, 'UTF-8')
-    print('[x] pricipio del proceso %r' %strBody)
-    serializerBody = serializers.RecipeSerializer(json.loads(strBody))
-    print(len(strBody))
+    print('[x] pricipio del proceso')
+
+
 
     recipe = Recipe.objects.create(**json.loads(strBody))
     # self._get_or_create_tags(tags, recipe)
     # self._get_or_create_ingredients(ingredients, recipe)
-    print(recipe.firstName)
+
     subject = f"Tienes un nuevo mensaje  de {recipe.firstName}  "
 
     message = f"te acaba de contactar {recipe.firstName} su informacion es la sigueinte  es: \n\n \
