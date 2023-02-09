@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
+from django.utils import timezone
 
 # def recipe_image_file_path(instance, filename):
 #     """Generate file path for new recipe image."""
@@ -50,15 +51,33 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Recipe(models.Model):
 
+    class Meta:
+        ordering = ['created']
+
+
     firstName = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     Phone = models.CharField(max_length=255, blank=True)
     Company = models.CharField(max_length=255, blank=True)
     Comment = models.TextField(max_length=None, blank=True)
+    created = models.DateTimeField(default=timezone.now)
 
 
     def __str__(self):
-        return self.Company
+        return self.firstName
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # class Tag(models.Model):
 #     name = models.CharField(max_length=255)

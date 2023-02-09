@@ -15,22 +15,22 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import Recipe
 from recipe import serializers
 
-@extend_schema_view(
-    list=extend_schema(
-        parameters=[
-            OpenApiParameter(
-                'tags',
-                OpenApiTypes.STR,
-                description='separacion por , para diferenciar los tags ',
-            ),
-            OpenApiParameter(
-                'ingredients',
-                OpenApiTypes.STR,
-                description='separacion por , para diferenciar los filter',
-            ),
-        ]
-    )
-)
+# @extend_schema_view(
+#     list=extend_schema(
+#         parameters=[
+#             OpenApiParameter(
+#                 'tags',
+#                 OpenApiTypes.STR,
+#                 description='separacion por , para diferenciar los tags ',
+#             ),
+#             OpenApiParameter(
+#                 'ingredients',
+#                 OpenApiTypes.STR,
+#                 description='separacion por , para diferenciar los filter',
+#             ),
+#         ]
+#     )
+# )
 class RecipeViewSet(viewsets.ModelViewSet):
 
     authentication_classes = [TokenAuthentication]

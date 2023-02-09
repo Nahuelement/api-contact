@@ -38,8 +38,8 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Recipe
-        fields = ['firstName', 'email', 'Phone', 'Company', 'Comment']
-        # read_only_fields = ['id']
+        fields = ['firstName', 'email', 'Phone', 'Company', 'Comment','created']
+        read_only_fields = ['created']
 
     # def _get_or_create_tags(self, tags, recipe):
     #     """tomar y crear los tags necesarios."""
